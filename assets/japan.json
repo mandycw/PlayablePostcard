@@ -1,0 +1,125 @@
+{
+	"textures": [
+		{
+			"image": "japan.png",
+			"format": "RGBA8888",
+			"size": {
+				"w": 1280,
+				"h": 1266
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "mask.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 236,
+						"h": 316
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 236,
+						"h": 316
+					},
+					"frame": {
+						"x": 0,
+						"y": 0,
+						"w": 236,
+						"h": 316
+					}
+				},
+				{
+					"filename": "sun.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 288,
+						"h": 288
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 288,
+						"h": 288
+					},
+					"frame": {
+						"x": 236,
+						"y": 0,
+						"w": 288,
+						"h": 288
+					}
+				},
+				{
+					"filename": "torigate.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 328,
+						"h": 352
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 328,
+						"h": 352
+					},
+					"frame": {
+						"x": 524,
+						"y": 0,
+						"w": 328,
+						"h": 352
+					}
+				},
+				{
+					"filename": "ramen.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 340,
+						"h": 264
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 340,
+						"h": 264
+					},
+					"frame": {
+						"x": 852,
+						"y": 0,
+						"w": 340,
+						"h": 264
+					}
+				},
+				{
+					"filename": "mtfuji.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1280,
+						"h": 914
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1280,
+						"h": 914
+					},
+					"frame": {
+						"x": 0,
+						"y": 352,
+						"w": 1280,
+						"h": 914
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "3.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:88c0c4af5f9033b15101f2464262361b:694f6629b6e449c5694909f49cfbdea6:669996baa50b13f330bdee67a69746d4$"
+	}
+}

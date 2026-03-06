@@ -9,9 +9,10 @@ const config = {
     pixelArt: true,
     zoom: 1,
     physics: {
-        default: "arcade",
-        arcade: {
-            debug: true
+        default: "matter",
+        matter: {
+            debug: true,
+            gravity: { y: 0 }
         }
     },
     scene: [ Load, Front, Back ] 
