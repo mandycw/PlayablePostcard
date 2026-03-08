@@ -8,6 +8,7 @@ class Front extends Phaser.Scene{
     }
 
     create(){
+
         document.getElementById('info').innerHTML = 'press F to flip postcard'
         this.sky = this.add.image(0, 0, 'sky').setOrigin(0)
         this.sky.setDisplaySize(800, 600)
@@ -15,22 +16,47 @@ class Front extends Phaser.Scene{
         //var shapes = this.cache.json.get('shapes')
         this.matter.world.setBounds(0, 0, game.config.width, game.config.height)
 
-        var sun = this.add.sprite(350, 200, 'sheet', 'sun.png');
-        sun.setDisplaySize(100, 100);
-        sun.setPosition(350, 200)
-
         this.cherry = this.add.image(100, -75, 'cherry').setOrigin(0)
         this.cherry.setDisplaySize(700, 500)
 
-        this.interactableItem(350, 200, 'sun.png', 100, 100, 'the sun is a deadly laser');
-        this.interactableItem(400, 400, 'mtfuji.png', 800, 600, 'mt fuji is a mountain');
+        this.interactableItem(350, 200, 'sun.png', 100, 100, 'the sun is a deadly laser')
+        this.interactableItem(400, 400, 'mtfuji.png', 800, 600, 'mt fuji is a mountain')
         this.interactableItem(200, 400, 'torigate.png', 300, 300, 'torigates are cool')
 
         this.input.keyboard.on('keydown-F', () => {
         this.scene.start('backScene')
-    })
+            })
+
+        this.popUp = this.add.container(400, 300)
+
+        this.popUp.setDepth(100)
+
+        let bg = this.add.rectangle(0, 0, 500, 250, 0x000000, 0.8)
+
+        bg.setStrokeStyle(4, 0xffffff)
+
+        this.popUpText = this.add.text(0, -30, '', {
+            fontSize: '24px',
+            fill: '#ffffff',
+            align: 'center',
+            wordWrap: {width: 450},
+            }).setOrigin(0.5)
         
+
+        let closeButton = this.add.text(210, -90, 'X', {
+            fontSize: '20px',
+            fill: '#ffaaaa',
+            }).setOrigin(0.5)
+
+        closeButton.setInteractive({useHandCursor: true})
+        closeButton.on('pointerdown', ()=>{
+            this.popUp.setVisible(false)
+        })
+        
+        this.popUp.add([bg, this.popUpText, closeButton])
+        this.popUp.setVisible(false)
     }
+    
     update(){
 
         
@@ -44,16 +70,37 @@ class Front extends Phaser.Scene{
         let item = this.add.sprite(x, y, 'sheet', name)
         item.setDisplaySize(width, height)
         item.setInteractive({ pixelPerfect: true })
+
+        let fx = item.preFX.addGlow(0xffffff, 4, 0, false)
+        fx.active = false
+        item.on('pointerover', () => {
+        fx.active = true;
+        })
+        item.on('pointerout', () => {
+            fx.active = false;
+        })
+
         item.on('pointerdown', ()=> {
-            console.log(message)
+            this.popUptrig(message)
             //popup()
         })
         return item
     }
 
-    popUp(){
+    popUptrig(text){
         //if interactableItem is clicked, activate popUp
         //popUp for each landmark
+        this.popUpText.setText(text)
+        this.popUp.setVisible(true)
+
+        this.popUp.setScale(0.5);
+        this.tweens.add({
+        targets: this.popUp,
+        scaleX: 1,
+        scaleY: 1,
+        duration: 200,
+        ease: 'Back.easeOut'
+    })
 
     }
 }
