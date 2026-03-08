@@ -16,16 +16,22 @@ class Front extends Phaser.Scene{
         //var shapes = this.cache.json.get('shapes')
         this.matter.world.setBounds(0, 0, game.config.width, game.config.height)
 
-        this.cherry = this.add.image(100, -75, 'cherry').setOrigin(0)
-        this.cherry.setDisplaySize(700, 500)
+        
 
         this.interactableItem(350, 200, 'sun.png', 100, 100, 'the sun is a deadly laser')
         this.interactableItem(400, 400, 'mtfuji.png', 800, 600, 'mt fuji is a mountain')
         this.interactableItem(200, 400, 'torigate.png', 300, 300, 'torigates are cool')
+        this.cherry = this.add.image(100, -75, 'cherry').setOrigin(0)
+        this.cherry.setDisplaySize(700, 500)
 
         this.input.keyboard.on('keydown-F', () => {
-        this.scene.start('backScene')
-            })
+            if (this.scene.isPaused('backScene')){
+                this.scene.resume('backScene')
+                this.scene.stop('frontScene')
+            } else{
+                this.scene.start('backScene')
+            }
+        })
 
         this.popUp = this.add.container(400, 300)
 
@@ -71,7 +77,7 @@ class Front extends Phaser.Scene{
         item.setDisplaySize(width, height)
         item.setInteractive({ pixelPerfect: true })
 
-        let fx = item.preFX.addGlow(0xffffff, 4, 0, false)
+        let fx = item.preFX.addGlow(0xffffec, 4, 1, false)
         fx.active = false
         item.on('pointerover', () => {
         fx.active = true;
