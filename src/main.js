@@ -6,15 +6,17 @@ const config = {
     type: Phaser.WEBGL,     // for tinting
     width: 800,
     height: 600,
-    pixelArt: true,
+    
     zoom: 1,
     physics: {
         default: "matter",
         matter: {
-            debug: true,
+            //fdebug: true,
             gravity: { y: 0 }
         }
     },
+    mode: Phaser.Scale.FIT,
+    //autoCenter: Phaser.Scale.CENTER_BOTH,
     scene: [ Load, Front, Back ] 
 }
 

@@ -8,7 +8,7 @@ class Front extends Phaser.Scene{
     }
 
     create(){
-
+        
         document.getElementById('info').innerHTML = 'press F to flip postcard'
         this.sky = this.add.image(0, 0, 'sky').setOrigin(0)
         this.sky.setDisplaySize(800, 600)
@@ -19,17 +19,24 @@ class Front extends Phaser.Scene{
         
 
         this.interactableItem(350, 200, 'sun.png', 100, 100, 'the sun is a deadly laser')
+        this.interactableItem(500, 300, 'nintendo.png', 200, 200, 'its a me mario')
         this.interactableItem(400, 400, 'mtfuji.png', 800, 600, 'mt fuji is a mountain')
+        this.interactableItem(150, 250, 'tokyotower.png', 200, 200, 'effiel tower')
         this.interactableItem(200, 400, 'torigate.png', 300, 300, 'torigates are cool')
+        
+        //this.interactableItem(450, 200, 'cherryblossom.png', 700, 500, 'pink flower')
+
         this.cherry = this.add.image(100, -75, 'cherry').setOrigin(0)
-        this.cherry.setDisplaySize(700, 500)
+        this.cherry.scale = 0.7
 
         this.input.keyboard.on('keydown-F', () => {
             if (this.scene.isPaused('backScene')){
                 this.scene.resume('backScene')
                 this.scene.stop('frontScene')
+                //this.sound.play('pageturn')
             } else{
                 this.scene.start('backScene')
+                //this.sound.play('pageturn')
             }
         })
 
@@ -51,7 +58,7 @@ class Front extends Phaser.Scene{
 
         let closeButton = this.add.text(210, -90, 'X', {
             fontSize: '20px',
-            fill: '#ffaaaa',
+            fill: '#ff3d3d',
             }).setOrigin(0.5)
 
         closeButton.setInteractive({useHandCursor: true})
@@ -87,6 +94,7 @@ class Front extends Phaser.Scene{
         })
 
         item.on('pointerdown', ()=> {
+            this.sound.play('click')
             this.popUptrig(message)
             //popup()
         })
