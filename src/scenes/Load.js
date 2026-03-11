@@ -21,7 +21,7 @@ class Load extends Phaser.Scene {
 
     create(){
         this.sound.play('bgmusic', {loop: true})
-        this.scene.start('frontScene')
+        this.scene.start('menuScene')
         
     }
 

@@ -17,7 +17,7 @@ const config = {
     },
     mode: Phaser.Scale.FIT,
     //autoCenter: Phaser.Scale.CENTER_BOTH,
-    scene: [ Load, Front, Back ] 
+    scene: [ Load, Menu, Front, Back ] 
 }
 
 const game = new Phaser.Game(config)

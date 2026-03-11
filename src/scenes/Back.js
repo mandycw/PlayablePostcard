@@ -56,7 +56,7 @@ class Back extends Phaser.Scene{
     sticker(sprite){
         //handle drag events for sprites 
         if (sprite.preFX) {
-            sprite.preFX.addGlow(0xffffff, 4, 0, false);
+            sprite.preFX.addGlow(0xffffff, 6, 0, false);
         }
         sprite.setInteractive({draggable: true, pixelPerfect: true, }) 
 
