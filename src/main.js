@@ -1,4 +1,6 @@
-
+//Name: Mandy Cai
+//Hours:
+//Credits: 
 'use strict'
 
 const config = {

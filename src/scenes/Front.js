@@ -8,37 +8,56 @@ class Front extends Phaser.Scene{
     }
 
     create(){
-        
+
         document.getElementById('info').innerHTML = 'press F to flip postcard'
         this.sky = this.add.image(0, 0, 'sky').setOrigin(0)
         this.sky.setDisplaySize(800, 600)
         
-        //var shapes = this.cache.json.get('shapes')
         this.matter.world.setBounds(0, 0, game.config.width, game.config.height)
 
         //sprites
         this.interactableItem(350, 200, 'sun.png', 100, 100, 'the sun is a deadly laser')
-        this.interactableItem(500, 300, 'nintendo.png', 200, 200, 'its a me mario')
-        this.interactableItem(400, 400, 'mtfuji.png', 800, 600, 'mt fuji is a mountain')
-        this.interactableItem(150, 250, 'tokyotower.png', 200, 200, 'effiel tower')
-        this.interactableItem(200, 400, 'torigate.png', 300, 300, 'torigates are cool')
-        
-        //this.interactableItem(450, 200, 'cherryblossom.png', 700, 500, 'pink flower')
+        this.interactableItem(680, 300, 'marioflag.png', 200, 350, 'its a me mario')
+        this.interactableItem(150, 250, 'ttower.png', 300, 500, 'effiel tower')
+        this.interactableItem(400, 400, 'mtfuji.png', 800, 400, 'mt fuji is a mountain')
+        this.interactableItem(200, 450, 'toriigate.png', 400, 300, 'torigates are cool')
 
-        this.cherry = this.add.image(100, -75, 'cherry').setOrigin(0)
-        this.cherry.scale = 0.7
+        this.cherry = this.add.image(535, 150, 'sakura').setOrigin(0.5)
+        this.cherry.scale = 1.3
 
-        //swtiching scenes
-        this.input.keyboard.on('keydown-F', () => {
-            if (this.scene.isPaused('backScene')){
-                this.scene.resume('backScene')
-                this.scene.stop('frontScene')
-                //this.sound.play('pageturn')
-            } else{
-                this.scene.start('backScene')
-                //this.sound.play('pageturn')
+        this.isFlipping = false
+
+    this.input.keyboard.on('keydown-F', () => {
+
+        if (this.isFlipping) return
+        this.isFlipping = true
+
+        this.tweens.add({
+            targets: this.cameras.main,
+            zoomX: 0,
+            duration: 350,
+            ease: 'Cubic.easeIn',
+            onComplete: () => {
+            this.scene.start('backScene')
+
             }
         })
+    })
+
+    this.events.on('wake', () => {
+
+        this.isFlipping = false
+
+        this.cameras.main.zoomX = 0
+
+        this.tweens.add({
+            targets: this.cameras.main,
+            zoomX: 1,
+            duration: 350,
+            ease: 'Cubic.easeOut'
+        })
+
+    })
 
         //popup rectangle
         this.popUp = this.add.container(400, 300)

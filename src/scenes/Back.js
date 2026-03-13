@@ -7,7 +7,7 @@ class Back extends Phaser.Scene{
         this.load.path = "./assets/"
         this.load.image('postcard', 'postcard.png')
         this.load.atlas('sheet', 'japan.png', 'japan.json')
-        this.load.json('shapes', 'japn.json')
+        //this.load.json('shapes', 'japn.json')
         this.load.audio('unstick', 'unstick.wav')
     }
 
@@ -16,38 +16,58 @@ class Back extends Phaser.Scene{
         this.postcard.setDisplaySize(820, 620)
        
         //sprites
-        this.mask = this.add.sprite(100, 100, 'sheet', 'mask.png')
-        this.ramen = this.add.sprite(100, 100, 'sheet', 'ramen.png')
-        this.mtfuji = this.add.sprite(100, 100, 'sheet', 'mtfuji.png')
-        this.cherry = this.add.sprite(100, 100, 'sheet', 'tokyotower.png')
-        this.nin = this.add.sprite(100, 100, 'sheet', 'nintendo.png')
+        this.bird = this.add.sprite(700, 500, 'sheet', 'bird.png')
+        this.ramen = this.add.sprite(100, 500, 'sheet', 'rmen.png')
+        this.fan = this.add.sprite(400, 100, 'sheet', 'fan.png')
+        this.luckycat = this.add.sprite(650, 150, 'sheet', 'luckycat.png')
+        this.dourma = this.add.sprite(100, 100, 'sheet', 'dourma.png')
 
         //scales
-        this.mask.scale = 0.5
-        this.ramen.scale = 0.5
-        this.mtfuji.scale = 0.2
-        this.cherry.scale = 0.2
-        this.nin.scale = 0.5
+        this.dourma.setScale(0.7)
+        this.fan.setScale(0.8)
+        this.bird.setScale(0.7)
 
         //make sticker
-        this.sticker(this.mask)
+        this.sticker(this.bird)
         this.sticker(this.ramen)
-        this.sticker(this.mtfuji)
-        this.sticker(this.cherry)
-        this.sticker(this.nin)
+        this.sticker(this.fan)
+        this.sticker(this.luckycat)
+        this.sticker(this.dourma)
 
-        //scene switching
-        this.input.keyboard.on('keydown-F', () => {
-            this.scene.launch('frontScene')
-            this.scene.pause()
-            this.scene.setVisible(false)
-            //this.sound.play('pageturn')
+       this.isFlipping = false
+
+this.input.keyboard.on('keydown-F', () => {
+
+    if (this.isFlipping) return
+    this.isFlipping = true
+
+    this.tweens.add({
+        targets: this.cameras.main,
+        zoomX: 0,
+        duration: 350,
+        ease: 'Cubic.easeIn',
+        onComplete: () => {
+            this.scene.start('frontScene')
+
+            }
         })
-        this.events.on('resume', ()=> {
-            this.scene.setVisible(true)
-            //this.sound.play('pageturn')
+    })
+
+    this.events.on('wake', () => {
+
+        this.isFlipping = false
+
+        this.cameras.main.zoomX = 0
+
+        this.tweens.add({
+            targets: this.cameras.main,
+            zoomX: 1,
+            duration: 350,
+            ease: 'Cubic.easeOut'
         })
-    }
+
+    })
+ }
 
     update(){
         

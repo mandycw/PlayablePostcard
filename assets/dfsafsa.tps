@@ -74,7 +74,7 @@
         <key>textureSubPath</key>
         <string></string>
         <key>textureFormat</key>
-        <enum type="SettingsBase::TextureFormat">png</enum>
+        <enum type="SettingsBase::TextureFormat">png8</enum>
         <key>borderPadding</key>
         <uint>0</uint>
         <key>maxTextureSize</key>
@@ -173,21 +173,6 @@
         </struct>
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
-            <key type="filename">mask.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>59,79,118,158</rect>
-                <key>scale9Paddings</key>
-                <rect>59,79,118,158</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
             <key type="filename">mtfuji.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -197,39 +182,9 @@
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>320,229,640,457</rect>
+                <rect>320,132,640,263</rect>
                 <key>scale9Paddings</key>
-                <rect>320,229,640,457</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">nintendo.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>65,49,129,97</rect>
-                <key>scale9Paddings</key>
-                <rect>65,49,129,97</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">ramen.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>85,66,170,132</rect>
-                <key>scale9Paddings</key>
-                <rect>85,66,170,132</rect>
+                <rect>320,132,640,263</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
@@ -248,22 +203,9 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">tokyotower.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>0.2</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>1440,960,2880,1920</rect>
-                <key>scale9Paddings</key>
-                <rect>1440,960,2880,1920</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">torigate.png</key>
+            <key type="filename">../../../Downloads/bird.png</key>
+            <key type="filename">../../../Downloads/dourma.png</key>
+            <key type="filename">../../../Downloads/fan.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -272,9 +214,84 @@
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>82,88,164,176</rect>
+                <rect>75,75,150,150</rect>
                 <key>scale9Paddings</key>
-                <rect>82,88,164,176</rect>
+                <rect>75,75,150,150</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../../../Downloads/luckycat.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>38,38,75,75</rect>
+                <key>scale9Paddings</key>
+                <rect>38,38,75,75</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../../../Downloads/marioflag.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>38,63,75,125</rect>
+                <key>scale9Paddings</key>
+                <rect>38,63,75,125</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../../../Downloads/rmen.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>67,60,135,120</rect>
+                <key>scale9Paddings</key>
+                <rect>67,60,135,120</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../../../Downloads/toriigate.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>158,113,315,225</rect>
+                <key>scale9Paddings</key>
+                <rect>158,113,315,225</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../../../Downloads/ttower.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>75,125,150,250</rect>
+                <key>scale9Paddings</key>
+                <rect>75,125,150,250</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
@@ -285,13 +302,16 @@
             <struct type="SpriteSheet">
                 <key>files</key>
                 <array>
-                    <filename>torigate.png</filename>
+                    <filename>../../../Downloads/bird.png</filename>
+                    <filename>../../../Downloads/dourma.png</filename>
+                    <filename>../../../Downloads/fan.png</filename>
+                    <filename>../../../Downloads/luckycat.png</filename>
+                    <filename>../../../Downloads/marioflag.png</filename>
+                    <filename>../../../Downloads/rmen.png</filename>
+                    <filename>../../../Downloads/toriigate.png</filename>
                     <filename>mtfuji.png</filename>
-                    <filename>mask.png</filename>
+                    <filename>../../../Downloads/ttower.png</filename>
                     <filename>sun.png</filename>
-                    <filename>ramen.png</filename>
-                    <filename>tokyotower.png</filename>
-                    <filename>nintendo.png</filename>
                 </array>
             </struct>
         </map>
