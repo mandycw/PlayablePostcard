@@ -20,8 +20,7 @@ class Menu extends Phaser.Scene {
         this.input.keyboard.on('keydown-ENTER', () => {
             //this.sound.play('menuStart')
             this.scene.start('frontScene')
-            // this.scene.launch('backScene')
-            // this.scene.sleep('backScene')
+            
 
         })
 

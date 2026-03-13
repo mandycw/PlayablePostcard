@@ -4,8 +4,8 @@
 			"image": "japan.png",
 			"format": "RGBA8888",
 			"size": {
-				"w": 3967,
-				"h": 526
+				"w": 2018,
+				"h": 1426
 			},
 			"scale": 1,
 			"frames": [
@@ -149,10 +149,35 @@
 						"h": 526
 					},
 					"frame": {
-						"x": 1200,
-						"y": 0,
+						"x": 0,
+						"y": 300,
 						"w": 1280,
 						"h": 526
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "pipe.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 300,
+						"h": 300
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 300,
+						"h": 300
+					},
+					"frame": {
+						"x": 1280,
+						"y": 300,
+						"w": 300,
+						"h": 300
 					},
 					"anchor": {
 						"x": 0.5,
@@ -174,10 +199,35 @@
 						"h": 240
 					},
 					"frame": {
-						"x": 2480,
-						"y": 0,
+						"x": 1580,
+						"y": 300,
 						"w": 269,
 						"h": 240
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "rocks.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 800,
+						"h": 600
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 800,
+						"h": 600
+					},
+					"frame": {
+						"x": 0,
+						"y": 826,
+						"w": 800,
+						"h": 600
 					},
 					"anchor": {
 						"x": 0.5,
@@ -199,8 +249,8 @@
 						"h": 288
 					},
 					"frame": {
-						"x": 2749,
-						"y": 0,
+						"x": 800,
+						"y": 826,
 						"w": 288,
 						"h": 288
 					},
@@ -224,8 +274,8 @@
 						"h": 450
 					},
 					"frame": {
-						"x": 3037,
-						"y": 0,
+						"x": 1088,
+						"y": 826,
 						"w": 630,
 						"h": 450
 					},
@@ -249,8 +299,8 @@
 						"h": 500
 					},
 					"frame": {
-						"x": 3667,
-						"y": 0,
+						"x": 1718,
+						"y": 826,
 						"w": 300,
 						"h": 500
 					},
@@ -265,6 +315,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:6688181b0186b6f01a84b56e7393a759:dec9d58796d7afc912d259b0620490db:669996baa50b13f330bdee67a69746d4$"
+		"smartupdate": "$TexturePacker:SmartUpdate:db2d13b2d50db2b76110f8cf93b23d9e:abcbb89cb70e8620833a950239df2dc6:669996baa50b13f330bdee67a69746d4$"
 	}
 }

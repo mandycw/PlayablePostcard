@@ -9,6 +9,7 @@ class Back extends Phaser.Scene{
         this.load.atlas('sheet', 'japan.png', 'japan.json')
         //this.load.json('shapes', 'japn.json')
         this.load.audio('unstick', 'unstick.wav')
+        this.load.image('pipe', 'pipe.png')
     }
 
     create(){
@@ -22,6 +23,18 @@ class Back extends Phaser.Scene{
         this.luckycat = this.add.sprite(650, 150, 'sheet', 'luckycat.png')
         this.dourma = this.add.sprite(100, 100, 'sheet', 'dourma.png')
 
+        this.pipe = this.add.image(600, 480, 'pipe')
+        this.pipe.setInteractive({pixelPerfect: true})
+        
+        let sfx = this.pipe.preFX.addGlow(0xffffec, 4, 1, false)
+        sfx.active = false
+        this.pipe.on('pointerover', () => {
+            sfx.active = true;
+        })
+        this.pipe.on('pointerout', () => {
+            sfx.active = false;
+        })
+
         //scales
         this.dourma.setScale(0.7)
         this.fan.setScale(0.8)
@@ -34,40 +47,39 @@ class Back extends Phaser.Scene{
         this.sticker(this.luckycat)
         this.sticker(this.dourma)
 
+
+
        this.isFlipping = false
 
-this.input.keyboard.on('keydown-F', () => {
+    this.pipe.on('pointerdown', () => {
 
-    if (this.isFlipping) return
-    this.isFlipping = true
-
-    this.tweens.add({
-        targets: this.cameras.main,
-        zoomX: 0,
-        duration: 350,
-        ease: 'Cubic.easeIn',
-        onComplete: () => {
-            this.scene.start('frontScene')
-
-            }
-        })
-    })
-
-    this.events.on('wake', () => {
-
-        this.isFlipping = false
-
-        this.cameras.main.zoomX = 0
+        if (this.isFlipping) return
+        this.isFlipping = true
 
         this.tweens.add({
             targets: this.cameras.main,
-            zoomX: 1,
+            zoomX: 0,
             duration: 350,
-            ease: 'Cubic.easeOut'
+            ease: 'Cubic.easeIn',
+            onComplete: () => {
+                this.scene.start('frontScene')
+
+                }
+            })
         })
 
-    })
- }
+    this.events.on('wake', () => {
+            this.isFlipping = false
+            this.cameras.main.zoomX = 0
+            this.tweens.add({
+                targets: this.cameras.main,
+                zoomX: 1,
+                duration: 350,
+                ease: 'Cubic.easeOut'
+            })
+
+        })
+    }
 
     update(){
         

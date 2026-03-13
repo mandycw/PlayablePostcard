@@ -206,6 +206,7 @@
             <key type="filename">../../../Downloads/bird.png</key>
             <key type="filename">../../../Downloads/dourma.png</key>
             <key type="filename">../../../Downloads/fan.png</key>
+            <key type="filename">../../../Downloads/pipe.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -312,6 +313,7 @@
                     <filename>mtfuji.png</filename>
                     <filename>../../../Downloads/ttower.png</filename>
                     <filename>sun.png</filename>
+                    <filename>../../../Downloads/pipe.png</filename>
                 </array>
             </struct>
         </map>
