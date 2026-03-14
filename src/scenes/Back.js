@@ -87,14 +87,10 @@ class Back extends Phaser.Scene{
             this.scene.start('menuScene')
         })
 
-        this.matter.add.mouseSpring({
-            length: 1,
-            stiffness: 0.1,
-            collisionFilter: { group: 0 }
-        })
-
         this.floorPetals(300)
         
+        this.add.text(400, 300, 'lets go to japan because the exchange rate is good and we can buy a lto of things for chepa', 
+            { fontSize: '30px', wordWrap: { width: 800 }, color: '#000000'}).setOrigin(0.5)
         
     }
 
