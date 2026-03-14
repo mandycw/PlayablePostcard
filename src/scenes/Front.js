@@ -9,7 +9,7 @@ class Front extends Phaser.Scene{
 
     create(){
 
-        this.matter.world.setBounds(0, 0, game.config.width, game.config.height)
+        //background
         this.sky = this.add.image(0, 0, 'sky').setOrigin(0)
         this.sky.setDisplaySize(800, 600)
 
@@ -95,7 +95,8 @@ class Front extends Phaser.Scene{
         })
 
         let line = new Phaser.Geom.Line(game.config.width, -50, 0, -30)  
-        // set up particle emitter  
+
+        //set up particle emitter  
         this.lineEmitter = this.add.particles(0, 0, 'petals', {
             frequency: 200,
             gravityY: 50,
@@ -113,7 +114,7 @@ class Front extends Phaser.Scene{
             blendMode: 'ADD'
         })
 
-        //particle emitter
+        //particle emitter 2
         let line2 = new Phaser.Geom.Line(game.config.width, -50, 0, -30)   
         this.lineEmitter2 = this.add.particles(0, 0, 'petals2', {
             frequency: 200,

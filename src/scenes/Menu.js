@@ -20,7 +20,6 @@ class Menu extends Phaser.Scene {
         this.menuTextGroup.add(credits)
 
         this.input.keyboard.on('keydown-ENTER', () => {
-            //this.sound.play('menuStart')
             this.scene.start('frontScene')
 
         })
@@ -30,9 +29,9 @@ class Menu extends Phaser.Scene {
         )
         this.directionsText.setVisible(false)
 
-        this.creditsText = this.add.text(200, 50,
-            'credits: \nArt: me\nmusic:\nhttps://freesound.org/people/ Seth_Makes_Sounds/sounds/680134/\nsticker sound:\nhttps://freesound.org/people/ jomse/sounds/428652/\npostcard:\nhttps://gallery.yopriceville.com/ Free-Clipart-Pictures/ Decorative-Elements-PNG/ Vintage_Envelope_PNG_Clipart\nESC to go back to menu ', { fontSize: '20px', wordWrap: { width: 500 }, color: '#000000', lineSpacing: 10}
-        )
+        this.creditsText = this.add.text(350, 250,
+            'credits: \nArt: me\nmusic:\nhttps://freesound.org/people/ Seth_Makes_Sounds/sounds/680134/\nsticker sound:\nhttps://freesound.org/people/ jomse/sounds/428652/\npostcard:\nhttps://gallery.yopriceville.com/ Free-Clipart-Pictures/ Decorative-Elements-PNG/ Vintage_Envelope_PNG_Clipart\nESC to go back to menu\nmtfuji: \nhttps://travel.gaijinpot.com/mount-fuji/\ntoriigates:\nhttps://blog.gaijinpot.com/fushimi-inari-tori-gates/\nmario world:\nhttps://www.foodbeast.com/ listicle/the-ultimate-food-guide-to-universal -studios-japans-super-nintendo-world/', { fontSize: '20px', wordWrap: { width: 600 }, color: '#000000', lineSpacing: 5}
+        ).setOrigin(0.5)
         this.creditsText.setVisible(false)
        
         this.input.keyboard.on('keydown-D', () => {

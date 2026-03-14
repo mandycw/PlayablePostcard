@@ -14,7 +14,7 @@ class Back extends Phaser.Scene{
     }
 
     create(){
-
+        //graivty 
         this.matter.world.setBounds(0, 0, game.config.width, game.config.height)
         this.matter.world.setGravity(0, 0.5)
 
@@ -84,10 +84,13 @@ class Back extends Phaser.Scene{
             })
 
         })
+
+        //return to menu
         this.input.keyboard.on('keydown-ESC', () => {
             this.scene.start('menuScene')
         })
 
+        //spawn petals
         this.floorPetals(300)
         
         this.add.text(400, 300, 'Lets go to Japan! We can visit the deer and get buy a lot of souveniers so bring an empty suitcase! Arent these stickers really cool? You can move them around c:', 
@@ -101,9 +104,6 @@ class Back extends Phaser.Scene{
 
     sticker(sprite){
         //handle drag events for sprites 
-        // if (sprite.preFX) {
-        //     sprite.preFX.addGlow(0xffffff, 6, 0, false);
-        // }
         sprite.setInteractive({draggable: true, pixelPerfect: true, }) 
     
         if(sprite.body) { 
@@ -126,6 +126,7 @@ class Back extends Phaser.Scene{
         })
     }
 
+    //make petals
     floorPetals(num) {
     for (let i = 0; i < num; i++) {
         let x = Phaser.Math.Between(50, 750)
