@@ -14,15 +14,15 @@ class Front extends Phaser.Scene{
         this.sky.setDisplaySize(800, 600)
 
         //sprites
-        this.interactableItem(350, 200, 'sun.png', 100, 100, 'the sun is a deadly laser', 'stonks')
-        this.interactableItem(680, 300, 'marioflag.png', 200, 350, 'Japans mario world! One of the places I actually want to go to.')
-        this.interactableItem(150, 250, 'ttower.png', 300, 500, 'Tokyo tower looks pretty cool at night with all the lights.')
-        this.interactableItem(400, 420, 'mtfuji.png', 800, 400, 'Japans most famous mountain. Another place that tourists have to go to.')
-        this.interactableItem(200, 430, 'toriigate.png', 400, 300, 'A really tourist-y spot to go to is a shrine Kyoto with a thousand of these. Looks cool.')
+        this.interactableItem(350, 200, 'sun.png', 100, 100, 'this is why people from high school keep going to japan every break LOL', 'stonks')
+        this.interactableItem(680, 300, 'marioflag.png', 200, 350, 'Japans mario world! One of the places I actually want to go to. It looks fun :>', 'nin')
+        this.interactableItem(150, 250, 'ttower.png', 300, 500, 'Tokyo tower looks pretty cool at night with all the lights.', 'tower')
+        this.interactableItem(400, 420, 'mtfuji.png', 800, 400, 'Japans most famous mountain. Another place that tourists have to go to.', 'mt')
+        this.interactableItem(200, 430, 'toriigate.png', 400, 300, 'A really tourist-y spot to go to is a shrine Kyoto with a thousand of these. Looks very cool.' ,'gate')
         this.rocks = this.add.image(400, 350, 'rocks').setOrigin(0.5)
         this.cherry = this.add.image(535, 150, 'sakura').setOrigin(0.5)
         this.cherry.scale = 1.3
-        this.pipe = this.add.image(600, 480, 'pipe')
+        this.pipe = this.add.image(600, 500, 'pipe')
         this.pipe.setInteractive({pixelPerfect: true})
         
         let sfx = this.pipe.preFX.addGlow(0xffffec, 4, 1, false)
@@ -170,7 +170,7 @@ class Front extends Phaser.Scene{
         if(img) {
             this.popUpImg.setTexture(img)
             this.popUpImg.setVisible(true)
-            this.popUpImg.setDisplaySize(300, 150)
+            this.popUpImg.setDisplaySize(280, 150)
             this.popUpText.setY(80)
         } else {
             this.popUpImg.setVisible(false)
