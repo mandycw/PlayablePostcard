@@ -91,9 +91,9 @@ class Back extends Phaser.Scene{
         })
 
         //spawn petals
-        this.floorPetals(300)
+        this.floorPetals(350)
         
-        this.add.text(400, 300, 'Lets go to Japan! We can visit the deer and get buy a lot of souveniers so bring an empty suitcase! Arent these stickers really cool? You can move them around c:', 
+        this.add.text(400, 300, 'Lets go to Japan! We can visit the deer and get buy a lot of souveniers so bring an empty suitcase! Arent these stickers really cool? You can move them around c: \nPress ESC at any time to return to the menu!', 
             { fontSize: '20px', wordWrap: { width: 800 }, color: '#000000'}).setOrigin(0.5)
         
     }
