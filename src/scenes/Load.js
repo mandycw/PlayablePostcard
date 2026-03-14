@@ -12,6 +12,7 @@ class Load extends Phaser.Scene {
         this.load.image('pipe', 'pipe.png')
         this.load.image('petals', 'petals.png')
         this.load.image('petals2', 'petals2.png')
+        this.load.image('stonks', 'exchangerate.png')
         this.load.audio('pageturn', 'pageturn.wav')
         this.load.audio('bgmusic', 'bgmusic.wav')
         this.load.audio('click', 'click.wav')

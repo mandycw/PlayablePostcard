@@ -9,9 +9,16 @@ class Back extends Phaser.Scene{
         this.load.atlas('sheet', 'japan.png', 'japan.json')
         this.load.audio('unstick', 'unstick.wav')
         this.load.image('pipe', 'pipe.png')
+        this.load.image('petals', 'petals.png')
+        this.load.image('petals2', 'petals2.png')
     }
 
     create(){
+
+        this.matter.world.setBounds(0, 0, game.config.width, game.config.height)
+        this.matter.world.setGravity(0, 1)
+
+        //postcard
         this.postcard = this.add.image(-10, -10, 'postcard').setOrigin(0)
         this.postcard.setDisplaySize(820, 620)
        
@@ -46,8 +53,8 @@ class Back extends Phaser.Scene{
         this.sticker(this.luckycat)
         this.sticker(this.dourma)
 
+        //scene switching
         this.isFlipping = false
-
         this.pipe.on('pointerdown', () => {
 
             if (this.isFlipping) return
@@ -56,7 +63,7 @@ class Back extends Phaser.Scene{
             this.tweens.add({
                 targets: this.cameras.main,
                 zoomX: 0,
-                duration: 350,
+                duration: 500,
                 ease: 'Cubic.easeIn',
                 onComplete: () => {
                     this.scene.start('frontScene')
@@ -71,7 +78,7 @@ class Back extends Phaser.Scene{
             this.tweens.add({
                 targets: this.cameras.main,
                 zoomX: 1,
-                duration: 350,
+                duration: 500,
                 ease: 'Cubic.easeOut'
             })
 
@@ -79,19 +86,33 @@ class Back extends Phaser.Scene{
         this.input.keyboard.on('keydown-ESC', () => {
             this.scene.start('menuScene')
         })
+
+        this.matter.add.mouseSpring({
+            length: 1,
+            stiffness: 0.1,
+            collisionFilter: { group: 0 }
+        })
+
+        this.floorPetals(300)
+        
+        
     }
 
     update(){
-        
+    
     }
 
     sticker(sprite){
         //handle drag events for sprites 
-        if (sprite.preFX) {
-            sprite.preFX.addGlow(0xffffff, 6, 0, false);
-        }
+        // if (sprite.preFX) {
+        //     sprite.preFX.addGlow(0xffffff, 6, 0, false);
+        // }
         sprite.setInteractive({draggable: true, pixelPerfect: true, }) 
-
+    
+        if(sprite.body) { 
+            sprite.setIgnoreGravity(true)
+        }
+        
         sprite.on('dragstart', (pointer) => {
             sprite.setScale(sprite.scale * 1.1)
             this.children.bringToTop(sprite)
@@ -107,4 +128,21 @@ class Back extends Phaser.Scene{
             sprite.clearTint()
         })
     }
+
+    floorPetals(num) {
+    for (let i = 0; i < num; i++) {
+        let x = Phaser.Math.Between(50, 750)
+        let y = Phaser.Math.Between(100, 580)
+        let texture = Phaser.Math.RND.pick(['petals', 'petals2'])
+        
+        let petal = this.matter.add.image(x, y, texture)
+        petal.setInteractive({ pixelPerfect: true })
+        petal.setCircle(5)
+        petal.setIgnoreGravity(false)
+        petal.setVelocityX(Phaser.Math.FloatBetween(-1, 1))
+
+    }
+}
+  
+
 }

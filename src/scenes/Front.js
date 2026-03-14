@@ -9,17 +9,16 @@ class Front extends Phaser.Scene{
 
     create(){
 
+        this.matter.world.setBounds(0, 0, game.config.width, game.config.height)
         this.sky = this.add.image(0, 0, 'sky').setOrigin(0)
         this.sky.setDisplaySize(800, 600)
-        
-        this.matter.world.setBounds(0, 0, game.config.width, game.config.height)
 
         //sprites
-        this.interactableItem(350, 200, 'sun.png', 100, 100, 'the sun is a deadly laser')
-        this.interactableItem(680, 300, 'marioflag.png', 200, 350, 'japans mario world! if we go we have to visit pls. I love nintendo')
-        this.interactableItem(150, 250, 'ttower.png', 300, 500, 'this is the tokyo tower. i feel like we are not real tourists if we dont see this')
-        this.interactableItem(400, 420, 'mtfuji.png', 800, 400, 'mt fuji very iconic, see big mountain')
-        this.interactableItem(200, 430, 'toriigate.png', 400, 300, 'not real tourists if we dont see this too')
+        this.interactableItem(350, 200, 'sun.png', 100, 100, 'the sun is a deadly laser', 'stonks')
+        this.interactableItem(680, 300, 'marioflag.png', 200, 350, 'Japans mario world! One of the places I actually want to go to.')
+        this.interactableItem(150, 250, 'ttower.png', 300, 500, 'Tokyo tower looks pretty cool at night with all the lights.')
+        this.interactableItem(400, 420, 'mtfuji.png', 800, 400, 'Japans most famous mountain. Another place that tourists have to go to.')
+        this.interactableItem(200, 430, 'toriigate.png', 400, 300, 'A really tourist-y spot to go to is a shrine Kyoto with a thousand of these. Looks cool.')
         this.rocks = this.add.image(400, 350, 'rocks').setOrigin(0.5)
         this.cherry = this.add.image(535, 150, 'sakura').setOrigin(0.5)
         this.cherry.scale = 1.3
@@ -37,7 +36,7 @@ class Front extends Phaser.Scene{
         
 
         this.isFlipping = false
-
+        //switching scenes via pipe
         this.pipe.on('pointerdown', () => {
             if (this.isFlipping) return
             this.isFlipping = true
@@ -45,7 +44,7 @@ class Front extends Phaser.Scene{
             this.tweens.add({
                 targets: this.cameras.main,
                 zoomX: 0,
-                duration: 350,
+                duration: 500,
                 ease: 'Cubic.easeIn',
                 onComplete: () => {
                     this.scene.start('backScene')
@@ -60,7 +59,7 @@ class Front extends Phaser.Scene{
             this.tweens.add({
                 targets: this.cameras.main,
                 zoomX: 1,
-                duration: 350,
+                duration: 500,
                 ease: 'Cubic.easeOut'
             })
 
@@ -69,15 +68,16 @@ class Front extends Phaser.Scene{
         //popup rectangle
         this.popUp = this.add.container(400, 300)
         this.popUp.setDepth(100)
-        let bg = this.add.rectangle(0, 0, 500, 250, 0x000000, 0.8)
+        let bg = this.add.rectangle(0, 0, 500, 350, 0x000000, 0.8)
         bg.setStrokeStyle(4, 0xffffff)
+        this.popUpImg = this.add.image(0, -40, '').setOrigin(0.5)
         this.popUpText = this.add.text(0, -30, '', {
-            fontSize: '24px',
+            fontSize: '20px',
             fill: '#ffffff',
             align: 'center',
             wordWrap: {width: 450},
             }).setOrigin(0.5)
-        let closeButton = this.add.text(210, -90, 'X', {
+        let closeButton = this.add.text(220, -145, 'X', {
             fontSize: '20px',
             fill: '#ff3d3d',
             }).setOrigin(0.5)
@@ -87,7 +87,7 @@ class Front extends Phaser.Scene{
             this.popUp.setVisible(false)
         })
         
-        this.popUp.add([bg, this.popUpText, closeButton])
+        this.popUp.add([bg, this.popUpText, this.popUpImg, closeButton, ])
         this.popUp.setVisible(false)
 
         this.input.keyboard.on('keydown-ESC', () => {
@@ -113,8 +113,8 @@ class Front extends Phaser.Scene{
             blendMode: 'ADD'
         })
 
-        let line2 = new Phaser.Geom.Line(game.config.width, -50, 0, -30)  
-        // set up particle emitter  
+        //particle emitter
+        let line2 = new Phaser.Geom.Line(game.config.width, -50, 0, -30)   
         this.lineEmitter2 = this.add.particles(0, 0, 'petals2', {
             frequency: 200,
             gravityY: 50,
@@ -139,7 +139,7 @@ class Front extends Phaser.Scene{
     }   
 
 
-    interactableItem(x, y, name, width, height, message){
+    interactableItem(x, y, name, width, height, message, img){
         //glow
         //listener for pointerdown
         let item = this.add.sprite(x, y, 'sheet', name)
@@ -156,16 +156,26 @@ class Front extends Phaser.Scene{
         })
         item.on('pointerdown', ()=> {
             this.sound.play('click')
-            this.popUptrig(message)
+            this.popUptrig(message, img)
         })
         return item
     }
 
-    popUptrig(text){
+    popUptrig(text, img){
         //if interactableItem is clicked, activate popUp
         //popUp for each landmark
         this.popUpText.setText(text)
         this.popUp.setVisible(true)
+
+        if(img) {
+            this.popUpImg.setTexture(img)
+            this.popUpImg.setVisible(true)
+            this.popUpImg.setDisplaySize(300, 150)
+            this.popUpText.setY(80)
+        } else {
+            this.popUpImg.setVisible(false)
+            this.popUpText.setY(0)
+        }
 
         this.popUp.setScale(0.5);
         this.tweens.add({

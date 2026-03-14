@@ -26,7 +26,7 @@ class Menu extends Phaser.Scene {
         })
 
         this.directionsText = this.add.text(160, 160,
-            'click to interact! \n ESC to go back to menu whenever', { fontSize: '30px', wordWrap: { width: 800 }, color: '#000000'}
+            'click to interact! \n ESC to go back to menu whenever \n stickers are movable in the back! click and drag to move them', { fontSize: '30px', wordWrap: { width: 800 }, color: '#000000'}
         )
         this.directionsText.setVisible(false)
 

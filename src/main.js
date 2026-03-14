@@ -1,6 +1,7 @@
 //Name: Mandy Cai
 //Hours:
-//Credits: 
+//Phaser components: drag and drop stickers in Back.js, tween manager for flipping postcard, particle effects in Front.js, glowFX on clickable sprites in Front.js, physics on petals in Back.js
+
 'use strict'
 
 const config = {
@@ -8,7 +9,7 @@ const config = {
     type: Phaser.WEBGL,     // for tinting
     width: 800,
     height: 600,
-    
+    backgroundColor: '#ffffff',
     zoom: 1,
     physics: {
         default: "matter",
