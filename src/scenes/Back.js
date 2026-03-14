@@ -7,7 +7,6 @@ class Back extends Phaser.Scene{
         this.load.path = "./assets/"
         this.load.image('postcard', 'postcard.png')
         this.load.atlas('sheet', 'japan.png', 'japan.json')
-        //this.load.json('shapes', 'japn.json')
         this.load.audio('unstick', 'unstick.wav')
         this.load.image('pipe', 'pipe.png')
     }
@@ -47,28 +46,26 @@ class Back extends Phaser.Scene{
         this.sticker(this.luckycat)
         this.sticker(this.dourma)
 
+        this.isFlipping = false
 
+        this.pipe.on('pointerdown', () => {
 
-       this.isFlipping = false
+            if (this.isFlipping) return
+            this.isFlipping = true
 
-    this.pipe.on('pointerdown', () => {
+            this.tweens.add({
+                targets: this.cameras.main,
+                zoomX: 0,
+                duration: 350,
+                ease: 'Cubic.easeIn',
+                onComplete: () => {
+                    this.scene.start('frontScene')
 
-        if (this.isFlipping) return
-        this.isFlipping = true
-
-        this.tweens.add({
-            targets: this.cameras.main,
-            zoomX: 0,
-            duration: 350,
-            ease: 'Cubic.easeIn',
-            onComplete: () => {
-                this.scene.start('frontScene')
-
-                }
+                    }
+                })
             })
-        })
 
-    this.events.on('wake', () => {
+        this.events.on('wake', () => {
             this.isFlipping = false
             this.cameras.main.zoomX = 0
             this.tweens.add({
@@ -78,6 +75,9 @@ class Back extends Phaser.Scene{
                 ease: 'Cubic.easeOut'
             })
 
+        })
+        this.input.keyboard.on('keydown-ESC', () => {
+            this.scene.start('menuScene')
         })
     }
 

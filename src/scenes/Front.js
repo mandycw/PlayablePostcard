@@ -9,7 +9,6 @@ class Front extends Phaser.Scene{
 
     create(){
 
-        document.getElementById('info').innerHTML = 'press F to flip postcard'
         this.sky = this.add.image(0, 0, 'sky').setOrigin(0)
         this.sky.setDisplaySize(800, 600)
         
@@ -17,10 +16,10 @@ class Front extends Phaser.Scene{
 
         //sprites
         this.interactableItem(350, 200, 'sun.png', 100, 100, 'the sun is a deadly laser')
-        this.interactableItem(680, 300, 'marioflag.png', 200, 350, 'its a me mario')
-        this.interactableItem(150, 250, 'ttower.png', 300, 500, 'effiel tower')
-        this.interactableItem(400, 420, 'mtfuji.png', 800, 400, 'mt fuji is a mountain')
-        this.interactableItem(200, 450, 'toriigate.png', 400, 300, 'torigates are cool')
+        this.interactableItem(680, 300, 'marioflag.png', 200, 350, 'japans mario world! if we go we have to visit pls. I love nintendo')
+        this.interactableItem(150, 250, 'ttower.png', 300, 500, 'this is the tokyo tower. i feel like we are not real tourists if we dont see this')
+        this.interactableItem(400, 420, 'mtfuji.png', 800, 400, 'mt fuji very iconic, see big mountain')
+        this.interactableItem(200, 430, 'toriigate.png', 400, 300, 'not real tourists if we dont see this too')
         this.rocks = this.add.image(400, 350, 'rocks').setOrigin(0.5)
         this.cherry = this.add.image(535, 150, 'sakura').setOrigin(0.5)
         this.cherry.scale = 1.3
@@ -90,6 +89,48 @@ class Front extends Phaser.Scene{
         
         this.popUp.add([bg, this.popUpText, closeButton])
         this.popUp.setVisible(false)
+
+        this.input.keyboard.on('keydown-ESC', () => {
+            this.scene.start('menuScene')
+        })
+
+        let line = new Phaser.Geom.Line(game.config.width, -50, 0, -30)  
+        // set up particle emitter  
+        this.lineEmitter = this.add.particles(0, 0, 'petals', {
+            frequency: 200,
+            gravityY: 50,
+            lifespan: 6000,
+            alpha: {
+                start: 1,
+                end: 0.1
+            },
+            tint: [ 0xfa37aa ],
+            emitZone: { 
+                type: 'random', 
+                source: line, 
+                quantity: 1
+            },
+            blendMode: 'ADD'
+        })
+
+        let line2 = new Phaser.Geom.Line(game.config.width, -50, 0, -30)  
+        // set up particle emitter  
+        this.lineEmitter2 = this.add.particles(0, 0, 'petals2', {
+            frequency: 200,
+            gravityY: 50,
+            lifespan: 6000,
+            alpha: {
+                start: 1,
+                end: 0.1
+            },
+            tint: [ 0xfa37a3 ],
+            emitZone: { 
+                type: 'random', 
+                source: line2, 
+                quantity: 1
+            },
+            blendMode: 'ADD'
+        })
     }
     
     update(){
